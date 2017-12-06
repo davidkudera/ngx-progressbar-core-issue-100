@@ -3,7 +3,7 @@ import * as webpack from 'webpack';
 import * as path from 'path';
 
 
-export default function(src: string, out: string) {
+export default function(root: string, src: string, out: string) {
 	return {
 		devtool: 'source-map',
 
@@ -40,7 +40,7 @@ export default function(src: string, out: string) {
 			}),
 			new AngularCompilerPlugin({
 				basePath: src,
-				tsConfigPath: path.join(__dirname, 'tsconfig.json'),
+				tsConfigPath: path.join(root, 'tsconfig.json'),
 				entryModule: path.join(src, 'app.module#AppModule'),
 				sourceMap: true,
 			}),

@@ -6,11 +6,12 @@ import * as connect from 'gulp-connect';
 import getWebpackConfig from './webpack.config';
 
 
-const src = path.join(__dirname, 'src');
-const out = path.join(__dirname, 'public');
+const root = path.join(__dirname, 'packages', 'my-app');
+const src = path.join(root, 'src');
+const out = path.join(root, 'public');
 
 gulp.task(`compile`, (done) => {
-	const webpackConfig = getWebpackConfig(src, out);
+	const webpackConfig = getWebpackConfig(root, src, out);
 
 	webpack(webpackConfig, (err, stats) => {
 		if(err) {
